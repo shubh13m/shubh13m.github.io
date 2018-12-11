@@ -12,47 +12,6 @@
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
         <script src="js/responsiveslides.min.js"></script>
         
-        <script>
-                // You can also use "$(window).load(function() {"
-                $(function () {
-            
-                  // Slideshow 1
-                  $("#slider1").responsiveSlides({
-                    maxwidth: 800,
-                    speed: 800
-                  });
-            
-                  // Slideshow 2
-                  $("#slider2").responsiveSlides({
-                    auto: false,
-                    pager: true,
-                    speed: 300,
-                    maxwidth: 540
-                  });
-            
-                  // Slideshow 3
-                  $("#slider3").responsiveSlides({
-                    manualControls: '#slider3-pager',
-                    maxwidth: 540
-                  });
-            
-                  // Slideshow 4
-                  $("#slider4").responsiveSlides({
-                    auto: false,
-                    pager: false,
-                    nav: true,
-                    speed: 500,
-                    namespace: "callbacks",
-                    before: function () {
-                      $('.events').append("<li>before event fired.</li>");
-                    },
-                    after: function () {
-                      $('.events').append("<li>after event fired.</li>");
-                    }
-                  });
-            
-                });
-              </script>
     </head>
 
     <body>
@@ -97,29 +56,11 @@
 
   <div class="w3-row w3-padding-64">
     <div class="w3-twothird w3-container">
-            
-    <div style="max-width:500px">
-            <img class="mySlides" src="res/slide.png" style="width:100%">
-            <img class="mySlides" src="res/slide1.png" style="width:100%">
-            <img class="mySlides" src="res/slide2.png" style="width:100%">
-          </div>
-          
-          <script>
-          var myIndex = 0;
-          carousel();
-          
-          function carousel() {
-              var i;
-              var x = document.getElementsByClassName("mySlides");
-              for (i = 0; i < x.length; i++) {
-                 x[i].style.display = "none";  
-              }
-              myIndex++;
-              if (myIndex > x.length) {myIndex = 1}    
-              x[myIndex-1].style.display = "block";  
-              setTimeout(carousel, 2000); // Change image every 2 seconds
-          }
-          </script>
+            <ul class="rslides" id="slider1">
+                    <li><img src="res/slide.png" alt=""></li>
+                    <li><img src="res/slide1.png" alt=""></li>
+                    <li><img src="res/slide2.png" alt=""></li>
+            </ul>
         
 
 <div class="w3-panel w3-orange w3-round">
@@ -231,22 +172,6 @@ function w3_close() {
     overlayBg.style.display = "none";
 }
 </script>
-<script>
-var myIndex = 0;
-carousel();
-
-function carousel() {
-    var i;
-    var x = document.getElementsByClassName("mySlides");
-    for (i = 0; i < x.length; i++) {
-       x[i].style.display = "none";  
-    }
-    myIndex++;
-    if (myIndex > x.length) {myIndex = 1}    
-    x[myIndex-1].style.display = "block";  
-    setTimeout(carousel, 2000); // Change image every 2 seconds
-}
-</script>
 
 
         </div>
@@ -283,14 +208,11 @@ function carousel() {
                 <tr class="body-up">
                     <td class="article"  colspan="6" rowspan="4">
                         
-                       
-                <div class="w3-content w3-section" style="max-width:1000px">
-                <img class="mySlides" src="res/slide.png" style="width:100%">
-                <img class="mySlides" src="res/slide1.png" style="width:100%">
-                <img class="mySlides" src="res/slide2.png" style="width:100%">
-            </div>
-          
-
+                        <ul class="rslides" id="slider1">
+                                <li><img src="res/slide.png" alt=""></li>
+                                <li><img src="res/slide1.png" alt=""></li>
+                                <li><img src="res/slide2.png" alt=""></li>
+                        </ul>
                     </td>
                     <td class="sidebar1" colspan="3">
                         how are you i am fine my name is shubham pandey i syudy in nit durgapur and i am a post graduate student of computer science department.
@@ -362,5 +284,47 @@ function carousel() {
                 </tr>
             </table>
         </div>
+
+        <script>
+                // You can also use "$(window).load(function() {"
+                $(function () {
+            
+                  // Slideshow 1
+                  $("#slider1").responsiveSlides({
+                    maxwidth: 800,
+                    speed: 800
+                  });
+            
+                  // Slideshow 2
+                  $("#slider2").responsiveSlides({
+                    auto: false,
+                    pager: true,
+                    speed: 300,
+                    maxwidth: 540
+                  });
+            
+                  // Slideshow 3
+                  $("#slider3").responsiveSlides({
+                    manualControls: '#slider3-pager',
+                    maxwidth: 540
+                  });
+            
+                  // Slideshow 4
+                  $("#slider4").responsiveSlides({
+                    auto: false,
+                    pager: false,
+                    nav: true,
+                    speed: 500,
+                    namespace: "callbacks",
+                    before: function () {
+                      $('.events').append("<li>before event fired.</li>");
+                    },
+                    after: function () {
+                      $('.events').append("<li>after event fired.</li>");
+                    }
+                  });
+            
+                });
+              </script>
     </body>
 </html>
