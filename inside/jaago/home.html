@@ -97,11 +97,29 @@
 
   <div class="w3-row w3-padding-64">
     <div class="w3-twothird w3-container">
-            <ul class="rslides" id="slider1">
-                    <li><img src="res/slide.png" alt=""></li>
-                    <li><img src="res/slide1.png" alt=""></li>
-                    <li><img src="res/slide2.png" alt=""></li>
-            </ul>
+            
+    <div style="max-width:500px">
+            <img class="mySlides" src="res/slide.png" style="width:100%">
+            <img class="mySlides" src="res/slide1.png" style="width:100%">
+            <img class="mySlides" src="res/slide2.png" style="width:100%">
+          </div>
+          
+          <script>
+          var myIndex = 0;
+          carousel();
+          
+          function carousel() {
+              var i;
+              var x = document.getElementsByClassName("mySlides");
+              for (i = 0; i < x.length; i++) {
+                 x[i].style.display = "none";  
+              }
+              myIndex++;
+              if (myIndex > x.length) {myIndex = 1}    
+              x[myIndex-1].style.display = "block";  
+              setTimeout(carousel, 2000); // Change image every 2 seconds
+          }
+          </script>
         
 
 <div class="w3-panel w3-orange w3-round">
@@ -213,6 +231,22 @@ function w3_close() {
     overlayBg.style.display = "none";
 }
 </script>
+<script>
+var myIndex = 0;
+carousel();
+
+function carousel() {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    for (i = 0; i < x.length; i++) {
+       x[i].style.display = "none";  
+    }
+    myIndex++;
+    if (myIndex > x.length) {myIndex = 1}    
+    x[myIndex-1].style.display = "block";  
+    setTimeout(carousel, 2000); // Change image every 2 seconds
+}
+</script>
 
 
         </div>
@@ -249,11 +283,14 @@ function w3_close() {
                 <tr class="body-up">
                     <td class="article"  colspan="6" rowspan="4">
                         
-                        <ul class="rslides" id="slider1">
-                                <li><img src="res/slide.png" alt=""></li>
-                                <li><img src="res/slide1.png" alt=""></li>
-                                <li><img src="res/slide2.png" alt=""></li>
-                        </ul>
+                       
+                <div class="w3-content w3-section" style="max-width:1000px">
+                <img class="mySlides" src="res/slide.png" style="width:100%">
+                <img class="mySlides" src="res/slide1.png" style="width:100%">
+                <img class="mySlides" src="res/slide2.png" style="width:100%">
+            </div>
+          
+
                     </td>
                     <td class="sidebar1" colspan="3">
                         how are you i am fine my name is shubham pandey i syudy in nit durgapur and i am a post graduate student of computer science department.
