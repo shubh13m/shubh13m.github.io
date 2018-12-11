@@ -11,48 +11,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
         <script src="js/responsiveslides.min.js"></script>
-                <script>
-                // You can also use "$(window).load(function() {"
-                $(function () {
-            
-                  // Slideshow 1
-                  $("#slider1").responsiveSlides({
-                    maxwidth: 800,
-                    speed: 800
-                  });
-            
-                  // Slideshow 2
-                  $("#slider2").responsiveSlides({
-                    auto: false,
-                    pager: true,
-                    speed: 300,
-                    maxwidth: 540
-                  });
-            
-                  // Slideshow 3
-                  $("#slider3").responsiveSlides({
-                    manualControls: '#slider3-pager',
-                    maxwidth: 540
-                  });
-            
-                  // Slideshow 4
-                  $("#slider4").responsiveSlides({
-                    auto: false,
-                    pager: false,
-                    nav: true,
-                    speed: 500,
-                    namespace: "callbacks",
-                    before: function () {
-                      $('.events').append("<li>before event fired.</li>");
-                    },
-                    after: function () {
-                      $('.events').append("<li>after event fired.</li>");
-                    }
-                  });
-            
-                });
-              </script>
-        
+     
     </head>
 
     <body>
@@ -97,11 +56,51 @@
 
   <div class="w3-row w3-padding-64">
     <div class="w3-twothird w3-container">
-            <ul class="rslides" id="slider1">
-                    <li><img src="res/slide.png" alt=""></li>
-                    <li><img src="res/slide1.png" alt=""></li>
-                    <li><img src="res/slide2.png" alt=""></li>
-            </ul>
+            <div class="w3-container">
+                    <div class="w3-display-container mySlides">
+                      <img src="res/slide.png" style="width:100%">
+                      <div class="w3-display-topleft w3-container w3-padding-32">
+                        <span class="w3-white w3-padding-large w3-animate-bottom">Lorem ipsum</span>
+                      </div>
+                    </div>
+                    <div class="w3-display-container mySlides">
+                      <img src="res/slide1.png" style="width:100%">
+                      <div class="w3-display-middle w3-container w3-padding-32">
+                        <span class="w3-white w3-padding-large w3-animate-bottom">Klorim tipsum</span>
+                      </div>
+                    </div>
+                    <div class="w3-display-container mySlides">
+                      <img src="res/slide2.png" style="width:100%">
+                      <div class="w3-display-topright w3-container w3-padding-32">
+                        <span class="w3-white w3-padding-large w3-animate-bottom">Blorum pipsum</span>
+                      </div>
+                    </div>
+                    <div class="w3-display-container mySlides">
+                            <img src="res/slide.png" style="width:100%">
+                            <div class="w3-display-topleft w3-container w3-padding-32">
+                              <span class="w3-white w3-padding-large w3-animate-bottom">Lorem ipsum</span>
+                            </div>
+                          </div>
+                          <div class="w3-display-container mySlides">
+                            <img src="res/slide1.png" style="width:100%">
+                            <div class="w3-display-middle w3-container w3-padding-32">
+                              <span class="w3-white w3-padding-large w3-animate-bottom">Klorim tipsum</span>
+                            </div>
+                          </div>
+                          <div class="w3-display-container mySlides">
+                            <img src="res/slide2.png" style="width:100%">
+                            <div class="w3-display-topright w3-container w3-padding-32">
+                              <span class="w3-white w3-padding-large w3-animate-bottom">Blorum pipsum</span>
+                            </div>
+                          </div>
+                
+                    <!-- Slideshow next/previous buttons -->
+                    <div class="w3-container w3-dark-grey w3-padding w3-xlarge">
+                      <div class="w3-left" onclick="plusDivs(-1)"><i class="fa fa-arrow-circle-left w3-hover-text-teal"></i></div>
+                      <div class="w3-right" onclick="plusDivs(1)"><i class="fa fa-arrow-circle-right w3-hover-text-teal"></i></div>
+                    
+                    </div>
+                  </div>
         
 
 <div class="w3-panel w3-orange w3-round">
@@ -249,11 +248,7 @@ function w3_close() {
                 <tr class="body-up">
                     <td class="article"  colspan="6" rowspan="4">
                         
-                        <ul class="rslides" id="slider1">
-                                <li><img src="res/slide.png" alt=""></li>
-                                <li><img src="res/slide1.png" alt=""></li>
-                                <li><img src="res/slide2.png" alt=""></li>
-                        </ul>
+                           
                     </td>
                     <td class="sidebar1" colspan="3">
                         how are you i am fine my name is shubham pandey i syudy in nit durgapur and i am a post graduate student of computer science department.
@@ -325,47 +320,38 @@ function w3_close() {
                 </tr>
             </table>
         </div>
-
         <script>
-                // You can also use "$(window).load(function() {"
-                $(function () {
-            
-                  // Slideshow 1
-                  $("#slider1").responsiveSlides({
-                    maxwidth: 800,
-                    speed: 800
-                  });
-            
-                  // Slideshow 2
-                  $("#slider2").responsiveSlides({
-                    auto: false,
-                    pager: true,
-                    speed: 300,
-                    maxwidth: 540
-                  });
-            
-                  // Slideshow 3
-                  $("#slider3").responsiveSlides({
-                    manualControls: '#slider3-pager',
-                    maxwidth: 540
-                  });
-            
-                  // Slideshow 4
-                  $("#slider4").responsiveSlides({
-                    auto: false,
-                    pager: false,
-                    nav: true,
-                    speed: 500,
-                    namespace: "callbacks",
-                    before: function () {
-                      $('.events').append("<li>before event fired.</li>");
-                    },
-                    after: function () {
-                      $('.events').append("<li>after event fired.</li>");
-                    }
-                  });
-            
-                });
-              </script>
+                // Slideshow
+                var slideIndex = 1;
+                showDivs(slideIndex);
+                
+                function plusDivs(n) {
+                  showDivs(slideIndex += n);
+                }
+                
+                function currentDiv(n) {
+                  showDivs(slideIndex = n);
+                }
+                
+                function showDivs(n) {
+                  var i;
+                  var x = document.getElementsByClassName("mySlides");
+                  var dots = document.getElementsByClassName("demodots");
+                  if (n > x.length) {slideIndex = 1}    
+                  if (n < 1) {slideIndex = x.length} ;
+                  for (i = 0; i < x.length; i++) {
+                     x[i].style.display = "none";  
+                  }
+                  for (i = 0; i < dots.length; i++) {
+                     dots[i].className = dots[i].className.replace(" w3-white", "");
+                  }
+                  x[slideIndex-1].style.display = "block";  
+                  dots[slideIndex-1].className += " w3-white";
+                }
+                </script>
+                <style>
+                    .mySlides {display:none}
+                </style>
+
     </body>
 </html>
