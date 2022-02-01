@@ -8,7 +8,7 @@ html {
 }
 /* Copy & Lists */
 p {
-  color : #F5F5F5;
+  color : #ffffff;
   line-height: 1.5rem;
   margin-top: 1rem;
   margin-bottom: 0;
@@ -24,6 +24,7 @@ color : #F5F5F5;
   margin-top: 1.5rem;
   margin-bottom: 1rem;
   line-height: 1.5rem;
+
 }
 h1 {
   font-size: 4.242rem;
@@ -51,7 +52,7 @@ h6 {
 
 
 .bgpic{
-background-image:url("../bgwork.jpg");
+background-image:url("../res/bgwork.jpg");
 background-position: center center ;
 background-repeat: no-repeat;
 background-attachment: fixed;
@@ -63,8 +64,9 @@ font-family: 'Oswald', sans-serif;
 width:70%;
 margin-left:40px;
 margin-bottom:50px;
-  color : #F5F5F5;
+color : #F5F5F5;
 }
+
 
 .footer{
 width:95%;
@@ -85,6 +87,8 @@ background:	#F5F5F5;
 padding:8px;
 border-radius:5px;
 margin-right:10%;
+opacity: 0.8;
+filter: alpha(opacity=50);
 }
 
 .social{
