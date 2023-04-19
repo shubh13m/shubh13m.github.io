@@ -1,7 +1,7 @@
 const currentPath = window.location.pathname;
 const directoryUrl = currentPath.substring(0, currentPath.lastIndexOf('/') + 1);
 const textElement = document.getElementById('text');
-
+console.log(">>>>>>>>>>",directoryUrl)
 fetch(directoryUrl)
   .then(response => response.text())
   .then(text => {
