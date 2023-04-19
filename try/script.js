@@ -1,24 +1,21 @@
-fetch('http://localhost:3000/list-files')
-  .then(response => response.json())
-  .then(files => {
-    console.log("files>>>>>>>>>>>>>>>>>>>>>>>>>",files);
-    const promises = files.map(file => {
-      console.log("fileName>>>>>>>>>>>>>>>>>>>>>>>>>",file);
+const currentPath = window.location.pathname;
+const directoryUrl = currentPath.substring(0, currentPath.lastIndexOf('/') + 1);
+const textElement = document.getElementById('text');
 
-      return fetch(file)
+fetch(directoryUrl)
+  .then(response => response.text())
+  .then(text => {
+    const fileNames = text.split('\n').filter(name => name.endsWith('.txt'));
+    const promises = fileNames.map(fileName => {
+      const fileUrl = directoryUrl + fileName;
+      return fetch(fileUrl)
         .then(response => response.text())
         .then(text => {
-          console.log("text>>>>>>>>>>>>>>>>>>>>>>>>>",text);
-
           const paragraph = document.createElement('p');
           paragraph.textContent = text;
-          console.log("paragraph>>>>>>>>>>>>>>>>>>>>>>>>>",paragraph);
-
           textElement.appendChild(paragraph);
         })
         .catch(error => {
-          console.log("error>>>>>>>>>>>>>>>>>>>>>>>>>");
-
           console.error(error);
         });
     });
