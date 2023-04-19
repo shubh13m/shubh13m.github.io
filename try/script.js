@@ -6,6 +6,7 @@ fetch(directoryUrl)
   .then(response => response.text())
   .then(text => {
     const fileNames = text.split('\n').filter(name => name.endsWith('.txt'));
+    console.log(">>>>>>>>>>>>, fileNames")
     const promises = fileNames.map(fileName => {
       const fileUrl = directoryUrl + fileName;
       return fetch(fileUrl)
