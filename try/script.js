@@ -1,26 +1,10 @@
-const currentPath = window.location.pathname;
-const directoryUrl = currentPath.substring(0, currentPath.lastIndexOf('/') + 1);
+const fileUrl = 'file1.txt';
 const textElement = document.getElementById('text');
-console.log(">>>>>>>>>>",directoryUrl)
-fetch(directoryUrl)
+
+fetch(fileUrl)
   .then(response => response.text())
   .then(text => {
-    const fileNames = text.split('\n').filter(name => name.endsWith('.txt'));
-    console.log(">>>>>>>>>>>>, fileNames")
-    const promises = fileNames.map(fileName => {
-      const fileUrl = directoryUrl + fileName;
-      return fetch(fileUrl)
-        .then(response => response.text())
-        .then(text => {
-          const paragraph = document.createElement('p');
-          paragraph.textContent = text;
-          textElement.appendChild(paragraph);
-        })
-        .catch(error => {
-          console.error(error);
-        });
-    });
-    return Promise.all(promises);
+    textElement.textContent = text;
   })
   .catch(error => {
     console.error(error);
