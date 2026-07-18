@@ -431,20 +431,6 @@
         </header>
 
         <!-- Dynamic Review Engine Interface -->
-        <div class="creator-panel">
-            <div class="form-grid">
-                <input type="text" id="form-title" class="input-element" placeholder="Title (e.g., Inception)">
-                <input type="number" id="form-year" class="input-element" placeholder="Year" min="1888" max="2030">
-                <select id="form-type" class="input-element">
-                    <option value="movie">Movie</option>
-                    <option value="series">Series</option>
-                </select>
-                <input type="text" id="form-rating" class="input-element" placeholder="Rating (e.g., 8.5/10)">
-                <input type="url" id="form-imdb" class="input-element" style="grid-column: span 4;" placeholder="IMDb Link URL">
-                <textarea id="form-review" class="input-element textarea-element" placeholder="Write parsing layout or structural analysis narrative details..."></textarea>
-                <button class="submit-review-btn" onclick="saveNewReview()">Log Entry</button>
-            </div>
-        </div>
 
         <div class="filter-row">
             <button class="pill-filter active-filter" onclick="filterMedia('all')">All Entries</button>
