@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Shubham Pandey | Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Oswald:wght@700&display=swap" rel="stylesheet">
     <style>
@@ -18,32 +18,36 @@
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
-        body {
-            color: var(--text-main);
-            background: #0B0B0C;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            letter-spacing: -0.01em;
-            min-height: 100vh;
+        html, body {
             overflow-x: hidden;
+            background: #0B0B0C;
+            height: 100%;
         }
 
-        /* 1. Transparent Atmospheric Backdrop */
+        body {
+            color: var(--text-main);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            letter-spacing: -0.01em;
+            display: flex;
+            flex-direction: column;
+        }
+
         .ambient-bg {
             position: fixed;
             top: 0; left: 0; right: 0; bottom: 0;
             background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.55)),
-                        url("https://raw.githubusercontent.com/shubh13m/shubh13m.github.io/master/res/bgwork.jpg") no-repeat center center fixed;
+                        url("res/bgwork.jpg") no-repeat center center fixed;
             background-size: cover;
             z-index: -1;
         }
 
-        /* Core Glassmorphic Layout Structure */
+        /* Standard App View Box */
         .app-view {
             display: none;
             width: 100%;
             max-width: 1050px;
             margin: 0 auto;
-            padding: 3rem 1.5rem 8rem 1.5rem;
+            padding: 2rem 1.25rem 7.5rem 1.25rem;
             animation: viewFade 0.35s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .app-view.active-view { display: block; }
@@ -53,18 +57,22 @@
             to { opacity: 1; transform: scale(1) translateY(0); }
         }
 
-        .page-header { margin-bottom: 2.5rem; text-shadow: 0 2px 10px rgba(0,0,0,0.3); }
-        .section-title { font-size: 2.2rem; font-weight: 800; margin-bottom: 0.25rem; }
-        .section-desc { color: var(--text-sub); font-size: 1rem; }
+        .page-header { margin-bottom: 2rem; text-shadow: 0 2px 10px rgba(0,0,0,0.3); }
+        .section-title { font-size: 2rem; font-weight: 800; margin-bottom: 0.25rem; }
+        .section-desc { color: var(--text-sub); font-size: 0.95rem; }
 
-        /* ==================== HOME VIEW (COMPACT MINI-CONSOLE) ==================== */
+        /* ==================== HOME VIEW (STRICT VERTICAL CONTAINMENT) ==================== */
         #view-home {
             display: none;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            min-height: 82vh;
-            text-align: center;
+            height: 100vh;
+            padding: 0 1.25rem;
+            box-sizing: border-box;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            overflow: hidden;
         }
         #view-home.active-view { display: flex; }
 
@@ -77,8 +85,7 @@
             margin-bottom: 0.4rem;
             text-shadow: 0 4px 24px rgba(0,0,0,0.35);
         }
-        .brand-subtitle { font-size: 0.9rem; font-weight: 600; color: var(--text-sub); letter-spacing: 0.3em; text-shadow: 0 2px 8px rgba(0,0,0,0.4); }
-        .accent-dot { color: var(--accent); }
+        .brand-subtitle { font-size: 0.9rem; font-weight: 600; color: var(--text-sub); letter-spacing: 0.3em; }
 
         .mini-console {
             background: rgba(0, 0, 0, 0.3);
@@ -92,7 +99,8 @@
             align-items: center;
             gap: 1.5rem;
             box-shadow: 0 12px 30px rgba(0,0,0,0.25);
-            max-width: 480px;
+            width: 100%;
+            max-width: 440px;
         }
         .mini-title { font-size: 0.7rem; font-weight: 800; letter-spacing: 0.1em; color: var(--accent); text-transform: uppercase; white-space: nowrap; }
         .mini-shows { display: flex; gap: 0.6rem; }
@@ -107,10 +115,11 @@
             font-size: 0.85rem;
             cursor: pointer;
             transition: all 0.2s ease;
+            margin-left: auto;
         }
         .mini-btn:hover { background: var(--accent); transform: scale(1.03); }
 
-        /* ==================== RESUME VIEW (UNIFORM GLASS CANVAS) ==================== */
+        /* ==================== RESUME VIEW ==================== */
         .resume-glass-canvas {
             background: var(--bg-glass);
             backdrop-filter: blur(15px);
@@ -118,7 +127,6 @@
             border: 1px solid var(--border-glass);
             border-radius: 24px;
             padding: 3rem;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
             display: grid;
             grid-template-columns: 2fr 1fr;
             gap: 3rem;
@@ -136,7 +144,7 @@
         .timeline-container { display: flex; flex-direction: column; gap: 2rem; }
         .job-card { background: rgba(255, 255, 255, 0.02); padding: 1.5rem; border-radius: 14px; border: 1px solid var(--border-glass); }
         .job-title { font-size: 1.2rem; font-weight: 700; color: var(--text-main); }
-        .job-meta { font-size: 0.85rem; color: var(--text-accent); font-weight: 500; margin-bottom: 0.75rem; }
+        .job-meta { font-size: 0.85rem; color: var(--text-muted); font-weight: 500; margin-bottom: 0.75rem; }
         .job-desc { font-size: 0.9rem; color: var(--text-sub); line-height: 1.6; padding-left: 1.1rem; }
         .job-desc li { margin-bottom: 0.5rem; }
         
@@ -169,65 +177,111 @@
         .proj-summary { color: var(--text-muted); font-size: 0.9rem; line-height: 1.5; margin-bottom: 1.5rem; }
         .pill-row span { font-size: 0.75rem; background: rgba(255,255,255,0.12); padding: 0.2rem 0.5rem; border-radius: 4px; margin-right: 0.3rem; font-weight: 500; }
 
-        /* ==================== REVIEWS VIEW (COMPACT BLOCKS) ==================== */
+        /* ==================== REVIEWS LOG ENGINE ==================== */
+        .creator-panel {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-glass);
+            border-radius: 18px;
+            padding: 1.5rem;
+            margin-bottom: 2.5rem;
+            backdrop-filter: blur(10px);
+        }
+        .form-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+        .input-element {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--border-glass);
+            border-radius: 8px;
+            padding: 0.65rem 1rem;
+            color: #FFFFFF;
+            font-family: inherit;
+            font-size: 0.9rem;
+            outline: none;
+            width: 100%;
+        }
+        .input-element:focus { border-color: var(--accent); }
+        .submit-review-btn {
+            background: var(--accent);
+            color: #000000;
+            border: none;
+            border-radius: 8px;
+            padding: 0.75rem 1.5rem;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+        .submit-review-btn:hover { opacity: 0.9; }
+
         .filter-row { display: flex; gap: 0.5rem; margin-bottom: 2rem; }
         .pill-filter { background: var(--bg-glass); border: 1px solid var(--border-glass); color: #FFFFFF; padding: 0.5rem 1.2rem; border-radius: 30px; font-weight: 600; font-size: 0.8rem; cursor: pointer; }
         .pill-filter.active-filter { background: #FFFFFF; color: #000000; border-color: #FFFFFF; }
-        
-        .critic-stream { display: flex; flex-direction: column; gap: 1rem; }
-        .compact-review-card {
-            display: grid;
-            grid-template-columns: 50px 180px 100px 1fr;
-            align-items: center;
-            gap: 1.5rem;
-            background: var(--bg-glass);
-            border: 1px solid var(--border-glass);
-            padding: 1rem 1.5rem;
-            border-radius: 14px;
-            backdrop-filter: blur(10px);
-        }
-        .media-symbol { font-size: 1.3rem; text-align: center; }
-        .media-name { font-size: 1rem; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-        .rating-stars { color: var(--accent); font-size: 0.9rem; letter-spacing: 0.05em; }
-        .short-opinion { color: var(--text-muted); font-size: 0.9rem; line-height: 1.4; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding-right: 1rem; }
 
-        /* ==================== UTILITY NAVIGATION DOCK ==================== */
+        /* ==================== GLOBAL NAVIGATION DOCK ==================== */
         .dock-container {
             position: fixed;
             bottom: 2rem;
             left: 50%;
             transform: translateX(-50%);
-            background: rgba(0, 0, 0, 0.4);
+            background: rgba(0, 0, 0, 0.6);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid var(--border-glass);
-            padding: 0.4rem;
+            padding: 0.35rem;
             border-radius: 40px;
             display: flex;
-            gap: 0.2rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            gap: 0.1rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
             z-index: 1000;
+            width: calc(100% - 2.5rem);
+            max-width: 380px;
+            justify-content: space-between;
         }
         .dock-btn {
             color: var(--text-muted);
             text-decoration: none;
-            padding: 0.6rem 1.4rem;
+            padding: 0.6rem 0;
+            flex: 1;
+            text-align: center;
             border-radius: 30px;
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.2s;
         }
         .dock-btn:hover, .dock-btn.active-tab { color: #000000; background: #FFFFFF; }
 
+        /* ==================== MOBILE LAYOUT OVERRIDES ==================== */
         @media (max-width: 860px) {
             .resume-glass-canvas { grid-template-columns: 1fr; gap: 2rem; padding: 1.5rem; }
             .bento-layout { grid-template-columns: 1fr; }
             .glass-card.span-2 { grid-column: span 1; }
-            .compact-review-card { grid-template-columns: auto 1fr auto; gap: 1rem; }
-            .short-opinion { display: none; }
-            .brand-name { font-size: 3.8rem; }
-            .mini-console { flex-direction: column; border-radius: 20px; padding: 1.5rem; width: 90%; align-items: center; }
+            
+            /* Review Grid Fix */
+            #dynamic-reviews-container {
+                grid-template-columns: 1fr !important;
+            }
+            .movie-review-card {
+                flex-direction: row;
+                gap: 1rem !important;
+                padding: 1rem !important;
+            }
+            
+            .form-grid { grid-template-columns: 1fr; }
+            .brand-name { font-size: 3.4rem; }
+            
+            .mini-console { 
+                flex-direction: row; 
+                padding: 0.5rem 0.5rem 0.5rem 1rem; 
+                gap: 0.75rem;
+            }
+            .mini-title { font-size: 0.65rem; }
+            .mini-chip { font-size: 0.75rem; padding: 0.25rem 0.6rem; }
+            .mini-btn { padding: 0.5rem 1rem; font-size: 0.75rem; }
+        }
+
+        @media (max-width: 360px) {
+            .brand-name { font-size: 2.8rem; }
+            .dock-btn { font-size: 0.75rem; }
         }
     </style>
 </head>
@@ -241,79 +295,64 @@
             <h1 class="brand-name">SHUBHAM PANDEY</h1>
             <p class="brand-subtitle">PROGRAMMER <span class="accent-dot">•</span> WEB DEVELOPER</p>
         </header>
-
         <section class="mini-console">
-            <span class="mini-title">Binge Engine</span>
+            <span class="mini-title">Binge</span>
             <div class="mini-shows">
                 <div class="mini-chip">Friends</div>
                 <div class="mini-chip">The Office</div>
             </div>
-            <button class="mini-btn" onclick="streamRandomEpisode()">Roll Dice</button>
+            <button class="mini-btn" onclick="streamRandomEpisode()">Roll</button>
         </section>
     </main>
 
-    <!-- ==================== RESUME VIEW (UNIFORM GLASS CANVAS) ==================== -->
+    <!-- ==================== RESUME VIEW ==================== -->
     <section id="view-resume" class="app-view">
         <header class="page-header">
             <h2 class="section-title">Professional Path</h2>
-            <p class="section-desc">Design verification, automation engineering, and system toolchains.</p>
+            <p class="section-desc">Design verification, automation engineering, and system toolchains[cite: 4].</p>
         </header>
-
         <div class="resume-glass-canvas">
             <div>
                 <h4 class="resume-column-title">Work Experience</h4>
                 <div class="timeline-container">
                     <div class="job-card">
                         <h3 class="job-title">Developer 3 (Client: Infineon)</h3>
-                        <p class="job-meta">UST // July 2025 – Present</p>
+                        <p class="job-meta">UST // July 2025 – Present[cite: 4]</p>
                         <ul class="job-desc">
-                            <li><strong>Metadata-Driven Verification:</strong> Drive SoC Design Verification (DV) using the Product Build Flow (PBF) methodology.</li>
-                            <li><strong>Architecture Modeling:</strong> Utilize MDL and XML-based Essence files to define SoC hierarchies, interconnect fabrics, and signal interfaces.</li>
-                            <li><strong>Formal Verification (LEC):</strong> Resolve non-equivalences between high-level architectural models and generated System Verilog (RTL/SVI) outputs.</li>
-                            <li><strong>Customer Engineering & RCA:</strong> Spearhead Root Cause Analysis (RCA) for external customer issues.</li>
+                            <li><strong>Metadata-Driven Verification:</strong> Drive SoC Design Verification (DV) using Product Build Flow (PBF)[cite: 4].</li>
+                            <li><strong>Architecture Modeling:</strong> Utilize MDL and XML Essence files to define SoC hierarchies[cite: 4].</li>
+                            <li><strong>Formal Verification (LEC):</strong> Resolve non-equivalences via LEC[cite: 4].</li>
                         </ul>
                     </div>
-                    
                     <div class="job-card">
                         <h3 class="job-title">Senior Compiler Engineer</h3>
-                        <p class="job-meta">Intel // July 2020 – Nov 2024</p>
+                        <p class="job-meta">Intel // July 2020 – Nov 2024[cite: 4]</p>
                         <ul class="job-desc">
-                            <li><strong>Compiler Validation:</strong> Validated and optimized compiler performance for Intel Google SmartNIC chipsets.</li>
-                            <li><strong>Automation & Metrics:</strong> Developed automated validation frameworks that optimized test execution time by 60% and improved code coverage from 70% to 85%.</li>
-                            <li><strong>Regression Visualization:</strong> Built an automated web-scraping tool using Selenium WebDriver to aggregate daily regression results.</li>
-                            <li><strong>Strategic Prototyping:</strong> Collaborated on Curiosity Quality Modeller for low-level compiler validation to enhance model-based testing.</li>
+                            <li><strong>Compiler Validation:</strong> Validated compiler performance for Intel Google SmartNIC chipsets[cite: 4].</li>
+                            <li><strong>Automation Suites:</strong> Developed frameworks optimizing test execution times by 60%[cite: 4].</li>
+                            <li><strong>Regression Metrics:</strong> Built Selenium WebDriver crawlers to aggregate daily data pipelines[cite: 4].</li>
                         </ul>
                     </div>
                 </div>
             </div>
-
             <div>
                 <h4 class="resume-column-title">Core Skills Stack</h4>
-                
                 <div class="skills-group">
                     <p class="skills-group-title">Languages</p>
                     <div class="tags-container">
-                        <span class="glass-tag">C++</span><span class="glass-tag">Python</span><span class="glass-tag">C</span><span class="glass-tag">Bash Shell</span>
+                        <span class="glass-tag">C++</span><span class="glass-tag">Python</span><span class="glass-tag">C</span><span class="glass-tag">Bash</span>[cite: 4]
                     </div>
                 </div>
-
                 <div class="skills-group">
                     <p class="skills-group-title">Verification & Tools</p>
                     <div class="tags-container">
-                        <span class="glass-tag">Formal Verification (LEC)</span><span class="glass-tag">Automation Testing</span><span class="glass-tag">Selenium</span><span class="glass-tag">Playwright</span><span class="glass-tag">CI/CD (Jenkins)</span><span class="glass-tag">Git</span>
+                        <span class="glass-tag">Formal Verification (LEC)</span><span class="glass-tag">Automation</span><span class="glass-tag">Selenium</span><span class="glass-tag">Jenkins CI/CD</span>[cite: 4]
                     </div>
                 </div>
-
-                <h4 class="resume-column-title" style="margin-top: 1rem;">Education</h4>
+                <h4 class="resume-column-title">Education</h4>
                 <div class="edu-item">
                     <p class="edu-title">M.Tech — Computer Science</p>
-                    <p class="edu-meta">National Institute of Technology, Durgapur</p>
-                    <p class="edu-meta" style="color:var(--accent)">GPA: 8.1</p>
-                </div>
-                <div class="edu-item">
-                    <p class="edu-title">B.Tech — Computer Science</p>
-                    <p class="edu-meta">Guru Ghasidas Vishwavidyalaya, Chhattisgarh</p>
-                    <p class="edu-meta" style="color:var(--accent)">GPA: 7.85</p>
+                    <p class="edu-meta">NIT Durgapur // GPA: 8.1[cite: 4]</p>
                 </div>
             </div>
         </div>
@@ -322,10 +361,9 @@
     <!-- ==================== PROJECTS VIEW ==================== -->
     <section id="view-projects" class="app-view">
         <header class="page-header">
-            <h2 class="section-title">Projects</h2>
+            <h2 class="section-title">Project Architectures</h2>
             <p class="section-desc">Open source utilities, data frameworks, and verification libraries.</p>
         </header>
-
         <div class="bento-layout">
             <div class="glass-card span-2">
                 <div>
@@ -334,7 +372,6 @@
                 </div>
                 <div class="pill-row"><span>PWA</span><span>IndexedDB</span><span>JS</span></div>
             </div>
-
             <div class="glass-card">
                 <div>
                     <h3 class="proj-name">Nemo Vault</h3>
@@ -342,15 +379,13 @@
                 </div>
                 <div class="pill-row"><span>Flutter</span><span>Cryptography</span></div>
             </div>
-
             <div class="glass-card span-2">
                 <div>
                     <h3 class="proj-name">Compiler Validation Framework</h3>
-                    <p class="proj-summary">Designed and implemented a compiler validation framework enabling automated generation of 10,000+ test cases, reducing manual validation efforts by 70%.</p>
+                    <p class="proj-summary">Designed and implemented a compiler validation framework enabling automated generation of 10,000+ test cases, reducing manual validation efforts by 70%[cite: 4].</p>
                 </div>
-                <div class="pill-row"><span>Python</span><span>Automation</span><span>Intel</span></div>
+                <div class="pill-row"><span>Python</span><span>Automation</span><span>Intel</span>[cite: 4]</div>
             </div>
-
             <div class="glass-card">
                 <div>
                     <h3 class="proj-name">Filmy Fool</h3>
@@ -361,66 +396,41 @@
         </div>
     </section>
 
-<!-- ==================== REVIEWS VIEW (POSTER CARDS) ==================== -->
+    <!-- ==================== REVIEWS VIEW ==================== -->
     <section id="view-reviews" class="app-view">
         <header class="page-header">
-            <h2 class="section-title">Movie Reviews</h2>
-            <p class="section-desc">Ratings and short review logs.</p>
+            <h2 class="section-title">Media Catalog Diary</h2>
+            <p class="section-desc">Add, filter, and review dynamic entertainment log data entries instantly.</p>
         </header>
 
+        <div class="creator-panel">
+            <div class="form-grid">
+                <input type="text" id="form-title" class="input-element" placeholder="Movie or Series Title...">
+                <select id="form-type" class="input-element">
+                    <option value="movie">Movie</option>
+                    <option value="series">Web Series</option>
+                </select>
+                <select id="form-rating" class="input-element">
+                    <option value="★★★★★">5 Stars</option>
+                    <option value="★★★★☆">4 Stars</option>
+                    <option value="★★★☆☆">3 Stars</option>
+                    <option value="★★☆☆☆">2 Stars</option>
+                    <option value="★☆☆☆☆">1 Star</option>
+                </select>
+            </div>
+            <div style="display: flex; gap: 1rem; align-items: center;">
+                <input type="text" id="form-review" class="input-element" placeholder="Write a short review line...">
+                <button class="submit-review-btn" onclick="saveNewReview()">Save</button>
+            </div>
+        </div>
+
         <div class="filter-row">
-            <button class="pill-filter active-filter" onclick="filterMedia('all')">All Curation</button>
+            <button class="pill-filter active-filter" onclick="filterMedia('all')">All Entries</button>
             <button class="pill-filter" onclick="filterMedia('movie')">Movies</button>
             <button class="pill-filter" onclick="filterMedia('series')">Series</button>
         </div>
 
-        <div class="critic-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(440px, 1fr)); gap: 1.5rem;">
-            
-            <!-- Shutter Island Card -->
-            <div class="movie-review-card" data-type="movie" style="background: var(--bg-glass); border: 1px solid var(--border-glass); border-radius: 18px; padding: 1.25rem; display: flex; gap: 1.25rem; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); transition: transform 0.25s ease;">
-                <!-- Poster Block -->
-                <div class="card-poster" style="width: 100px; height: 145px; background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(0,0,0,0.3)); border: 1px solid var(--border-glass); border-radius: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0.5rem; flex-shrink: 0; box-shadow: 0 8px 16px rgba(0,0,0,0.2);">
-                    <span style="font-size: 1.8rem; margin-bottom: 0.25rem;">🎬</span>
-                    <span style="font-size: 0.75rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; line-height: 1.2;">Shutter Island</span>
-                </div>
-                <!-- Content Block -->
-                <div class="card-details" style="display: flex; flex-direction: column; justify-content: space-between; flex-grow: 1;">
-                    <div>
-                        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.25rem;">
-                            <h3 style="font-size: 1.2rem; font-weight: 700; color: #FFFFFF; letter-spacing: -0.02em;">Shutter Island</h3>
-                        </div>
-                        <div class="rating-stars" style="color: var(--accent); font-size: 0.95rem; margin-bottom: 0.6rem;">★★★★★</div>
-                        <p style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">
-                            Phenomenal atmospheric building and masterclass psychological pacing layers. The plot structure shifts flawlessly upon subsequent viewings.
-                        </p>
-                    </div>
-                    <span style="align-self: flex-start; font-size: 0.65rem; font-weight: 700; color: var(--text-sub); background: rgba(255,255,255,0.08); padding: 0.2rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Log Completed</span>
-                </div>
-            </div>
-
-            <!-- The Office Card -->
-            <div class="movie-review-card" data-type="series" style="background: var(--bg-glass); border: 1px solid var(--border-glass); border-radius: 18px; padding: 1.25rem; display: flex; gap: 1.25rem; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); transition: transform 0.25s ease;">
-                <!-- Poster Block -->
-                <div class="card-poster" style="width: 100px; height: 145px; background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(0,0,0,0.3)); border: 1px solid var(--border-glass); border-radius: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0.5rem; flex-shrink: 0; box-shadow: 0 8px 16px rgba(0,0,0,0.2);">
-                    <span style="font-size: 1.8rem; margin-bottom: 0.25rem;">📺</span>
-                    <span style="font-size: 0.75rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; line-height: 1.2;">The Office</span>
-                </div>
-                <!-- Content Block -->
-                <div class="card-details" style="display: flex; flex-direction: column; justify-content: space-between; flex-grow: 1;">
-                    <div>
-                        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.25rem;">
-                            <h3 style="font-size: 1.2rem; font-weight: 700; color: #FFFFFF; letter-spacing: -0.02em;">The Office (U.S.)</h3>
-                        </div>
-                        <div class="rating-stars" style="color: var(--accent); font-size: 0.95rem; margin-bottom: 0.6rem;">★★★★★</div>
-                        <p style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">
-                            The absolute peak standard for situational ensemble staging loops. Flawless mockumentary timing that functions perfectly for daily comfort viewing.
-                        </p>
-                    </div>
-                    <span style="align-self: flex-start; font-size: 0.65rem; font-weight: 700; color: var(--accent); background: rgba(255, 193, 7, 0.1); padding: 0.2rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Watching Loop</span>
-                </div>
-            </div>
-
-        </div>
+        <div id="dynamic-reviews-container" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(440px, 1fr)); gap: 1.5rem;"></div>
     </section>
 
     <!-- ==================== NAVIGATION DOCK ==================== -->
@@ -431,35 +441,109 @@
         <div class="dock-btn" onclick="switchView('view-reviews', this)">Reviews</div>
     </nav>
 
-    <!-- ==================== RUNTIME CONTROL LOGIC ==================== -->
+    <!-- ==================== APPLICATION RUNTIME LOGIC ==================== -->
     <script>
         function switchView(viewId, tabElement) {
             document.querySelectorAll('.app-view').forEach(v => v.classList.remove('active-view'));
             document.querySelectorAll('.dock-btn').forEach(t => t.classList.remove('active-tab'));
-            
             document.getElementById(viewId).classList.add('active-view');
             tabElement.classList.add('active-tab');
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        const FRIENDS_LINKS = ["70273997", "70273998", "70273999", "70274000", "70274001"];
-        const OFFICE_LINKS = ["70105212", "70069628", "70069629", "70069630", "70069631"];
-
+        const FRIENDS_LINKS = ["70273997", "70273998", "70273999"];
+        const OFFICE_LINKS = ["70105212", "70069628", "70069629"];
         function streamRandomEpisode() {
             const listSelection = Math.random() > 0.5 ? FRIENDS_LINKS : OFFICE_LINKS;
             const targetIndex = Math.floor(Math.random() * listSelection.length);
             window.open(`https://www.netflix.com/watch/${listSelection[targetIndex]}`, '_blank');
         }
 
+        let libraryDataset = [];
+        const fallbackDefaultData = [
+            { id: 1, title: "Shutter Island", type: "movie", rating: "★★★★★", text: "Phenomenal atmospheric building and masterclass psychological pacing layers. Perfect structural parsing." },
+            { id: 2, title: "The Office (U.S.)", type: "series", rating: "★★★★★", text: "The absolute peak standard for situational ensemble loops. Unmatched mockumentary timing metrics." }
+        ];
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedData = localStorage.getItem('shubham_media_reviews');
+            if (savedData) {
+                libraryDataset = JSON.parse(savedData);
+            } else {
+                libraryDataset = fallbackDefaultData;
+                localStorage.setItem('shubham_media_reviews', JSON.stringify(libraryDataset));
+            }
+            renderReviewLibrary();
+        });
+
+        function renderReviewLibrary() {
+            const container = document.getElementById('dynamic-reviews-container');
+            container.innerHTML = '';
+
+            libraryDataset.forEach(item => {
+                const iconSymbol = item.type === 'movie' ? '🎬' : '📺';
+                const cardNode = document.createElement('div');
+                cardNode.className = 'movie-review-card';
+                cardNode.setAttribute('data-type', item.type);
+                cardNode.style.cssText = "background: var(--bg-glass); border: 1px solid var(--border-glass); border-radius: 18px; padding: 1.25rem; display: flex; gap: 1.25rem; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);";
+                
+                cardNode.innerHTML = `
+                    <div style="width: 85px; height: 125px; background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(0,0,0,0.3)); border: 1px solid var(--border-glass); border-radius: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0.4rem; flex-shrink: 0;">
+                        <span style="font-size: 1.5rem; margin-bottom: 0.2rem;">${iconSymbol}</span>
+                        <span style="font-size: 0.65rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">${item.title}</span>
+                    </div>
+                    <div style="display: flex; flex-direction: column; justify-content: space-between; flex-grow: 1; min-width: 0;">
+                        <div>
+                            <h3 style="font-size: 1.1rem; font-weight: 700; color: #FFFFFF; letter-spacing: -0.02em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${item.title}</h3>
+                            <div style="color: var(--accent); font-size: 0.85rem; margin-bottom: 0.4rem;">${item.rating}</div>
+                            <p style="color: var(--text-muted); font-size: 0.82rem; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">${item.text}</p>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(cardNode);
+            });
+        }
+
+        function saveNewReview() {
+            const titleInput = document.getElementById('form-title');
+            const typeInput = document.getElementById('form-type');
+            const ratingInput = document.getElementById('form-rating');
+            const reviewInput = document.getElementById('form-review');
+
+            if (!titleInput.value.trim() || !reviewInput.value.trim()) {
+                alert('Please enter both a title and review text.');
+                return;
+            }
+
+            const newEntry = {
+                id: Date.now(),
+                title: titleInput.value.trim(),
+                type: typeInput.value,
+                rating: ratingInput.value,
+                text: reviewInput.value.trim()
+            };
+
+            libraryDataset.unshift(newEntry);
+            localStorage.setItem('shubham_media_reviews', JSON.stringify(libraryDataset));
+            renderReviewLibrary();
+
+            titleInput.value = '';
+            reviewInput.value = '';
+            filterMedia('all');
+        }
+
         function filterMedia(typeSelection) {
             const buttons = document.querySelectorAll('.pill-filter');
             buttons.forEach(btn => btn.classList.remove('active-filter'));
-            event.target.classList.add('active-filter');
+            
+            if(window.event && window.event.target) {
+                window.event.target.classList.add('active-filter');
+            }
 
-            const items = document.querySelectorAll('.compact-review-card');
+            const items = document.querySelectorAll('.movie-review-card');
             items.forEach(item => {
                 if (typeSelection === 'all' || item.getAttribute('data-type') === typeSelection) {
-                    item.style.display = 'grid';
+                    item.style.display = 'flex';
                 } else {
                     item.style.display = 'none';
                 }
