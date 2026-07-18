@@ -20,7 +20,7 @@
 
         html, body {
             overflow-x: hidden;
-            background: #0B0B0C; /* This acts as the base under layer */
+            background: #0B0B0C;
             height: 100%;
         }
 
@@ -30,13 +30,12 @@
             letter-spacing: -0.01em;
             display: flex;
             flex-direction: column;
-            background: transparent; /* Fix 1: Stop the body from locking out the background layer */
+            background: transparent;
         }
 
         .ambient-bg {
             position: fixed;
             top: 0; left: 0; right: 0; bottom: 0;
-            /* Combine the gradient and the background image correctly */
             background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.55)), 
                             url("res/bgwork.jpg");
             background-repeat: no-repeat;
@@ -46,7 +45,6 @@
             z-index: -1;
         }
 
-        /* Standard App View Box */
         .app-view {
             display: none;
             width: 100%;
@@ -66,7 +64,6 @@
         .section-title { font-size: 2rem; font-weight: 800; margin-bottom: 0.25rem; }
         .section-desc { color: var(--text-sub); font-size: 0.95rem; }
 
-        /* ==================== HOME VIEW (STRICT VERTICAL CONTAINMENT) ==================== */
         #view-home {
             display: none;
             flex-direction: column;
@@ -78,7 +75,7 @@
             position: fixed;
             top: 0; left: 0; right: 0; bottom: 0;
             overflow: hidden;
-            background: transparent; /* Fix 2: Prevent the full-screen view box from masking the image */
+            background: transparent;
         }
         #view-home.active-view { display: flex; }
 
@@ -125,7 +122,6 @@
         }
         .mini-btn:hover { background: var(--accent); transform: scale(1.03); }
 
-        /* ==================== RESUME VIEW ==================== */
         .resume-glass-canvas {
             background: var(--bg-glass);
             backdrop-filter: blur(15px);
@@ -163,7 +159,6 @@
         .edu-title { font-size: 0.95rem; font-weight: 700; color: var(--text-main); }
         .edu-meta { font-size: 0.85rem; color: var(--text-muted); }
 
-        /* ==================== PROJECTS VIEW ==================== */
         .bento-layout { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
         .glass-card {
             background: var(--bg-glass);
@@ -183,7 +178,7 @@
         .proj-summary { color: var(--text-muted); font-size: 0.9rem; line-height: 1.5; margin-bottom: 1.5rem; }
         .pill-row span { font-size: 0.75rem; background: rgba(255,255,255,0.12); padding: 0.2rem 0.5rem; border-radius: 4px; margin-right: 0.3rem; font-weight: 500; }
 
-        /* ==================== REVIEWS LOG ENGINE ==================== */
+        /* ==================== REVIEW SYSTEM UPGRADE ==================== */
         .creator-panel {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid var(--border-glass);
@@ -192,7 +187,7 @@
             margin-bottom: 2.5rem;
             backdrop-filter: blur(10px);
         }
-        .form-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+        .form-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
         .input-element {
             background: rgba(0, 0, 0, 0.2);
             border: 1px solid var(--border-glass);
@@ -205,6 +200,7 @@
             width: 100%;
         }
         .input-element:focus { border-color: var(--accent); }
+        .textarea-element { grid-column: span 4; resize: vertical; min-height: 80px; }
         .submit-review-btn {
             background: var(--accent);
             color: #000000;
@@ -215,6 +211,7 @@
             font-size: 0.9rem;
             cursor: pointer;
             transition: opacity 0.2s;
+            grid-column: span 4;
         }
         .submit-review-btn:hover { opacity: 0.9; }
 
@@ -222,7 +219,23 @@
         .pill-filter { background: var(--bg-glass); border: 1px solid var(--border-glass); color: #FFFFFF; padding: 0.5rem 1.2rem; border-radius: 30px; font-weight: 600; font-size: 0.8rem; cursor: pointer; }
         .pill-filter.active-filter { background: #FFFFFF; color: #000000; border-color: #FFFFFF; }
 
-        /* ==================== GLOBAL NAVIGATION DOCK ==================== */
+        .imdb-link {
+            font-size: 0.75rem;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            margin-top: auto;
+            border: 1px solid rgba(255, 193, 7, 0.3);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            width: fit-content;
+            transition: all 0.2s ease;
+        }
+        .imdb-link:hover { background: rgba(255, 193, 7, 0.1); border-color: var(--accent); }
+
         .dock-container {
             position: fixed;
             bottom: 2rem;
@@ -256,30 +269,18 @@
         }
         .dock-btn:hover, .dock-btn.active-tab { color: #000000; background: #FFFFFF; }
 
-        /* ==================== MOBILE LAYOUT OVERRIDES ==================== */
         @media (max-width: 860px) {
             .resume-glass-canvas { grid-template-columns: 1fr; gap: 2rem; padding: 1.5rem; }
             .bento-layout { grid-template-columns: 1fr; }
             .glass-card.span-2 { grid-column: span 1; }
             
-            /* Review Grid Fix */
-            #dynamic-reviews-container {
-                grid-template-columns: 1fr !important;
-            }
-            .movie-review-card {
-                flex-direction: row;
-                gap: 1rem !important;
-                padding: 1rem !important;
-            }
-            
+            #dynamic-reviews-container { grid-template-columns: 1fr !important; }
+            .movie-review-card { flex-direction: row; gap: 1rem !important; padding: 1rem !important; }
             .form-grid { grid-template-columns: 1fr; }
+            .textarea-element, .submit-review-btn { grid-column: span 1; }
             .brand-name { font-size: 3.4rem; }
             
-            .mini-console { 
-                flex-direction: row; 
-                padding: 0.5rem 0.5rem 0.5rem 1rem; 
-                gap: 0.75rem;
-            }
+            .mini-console { flex-direction: row; padding: 0.5rem 0.5rem 0.5rem 1rem; gap: 0.75rem; }
             .mini-title { font-size: 0.65rem; }
             .mini-chip { font-size: 0.75rem; padding: 0.25rem 0.6rem; }
             .mini-btn { padding: 0.5rem 1rem; font-size: 0.75rem; }
@@ -429,6 +430,22 @@
             <p class="section-desc">Ratings and reviews</p>
         </header>
 
+        <!-- Dynamic Review Engine Interface -->
+        <div class="creator-panel">
+            <div class="form-grid">
+                <input type="text" id="form-title" class="input-element" placeholder="Title (e.g., Inception)">
+                <input type="number" id="form-year" class="input-element" placeholder="Year" min="1888" max="2030">
+                <select id="form-type" class="input-element">
+                    <option value="movie">Movie</option>
+                    <option value="series">Series</option>
+                </select>
+                <input type="text" id="form-rating" class="input-element" placeholder="Rating (e.g., 8.5/10)">
+                <input type="url" id="form-imdb" class="input-element" style="grid-column: span 4;" placeholder="IMDb Link URL">
+                <textarea id="form-review" class="input-element textarea-element" placeholder="Write parsing layout or structural analysis narrative details..."></textarea>
+                <button class="submit-review-btn" onclick="saveNewReview()">Log Entry</button>
+            </div>
+        </div>
+
         <div class="filter-row">
             <button class="pill-filter active-filter" onclick="filterMedia('all')">All Entries</button>
             <button class="pill-filter" onclick="filterMedia('movie')">Movies</button>
@@ -466,8 +483,24 @@
 
         let libraryDataset = [];
         const fallbackDefaultData = [
-            { id: 1, title: "Shutter Island", type: "movie", rating: "★★★★★", text: "Phenomenal atmospheric building and masterclass psychological pacing layers. Perfect structural parsing." },
-            { id: 2, title: "The Office (U.S.)", type: "series", rating: "★★★★★", text: "The absolute peak standard for situational ensemble loops. Unmatched mockumentary timing metrics." }
+            { 
+                id: 1, 
+                title: "Shutter Island", 
+                year: "2010",
+                type: "movie", 
+                rating: "8.8/10", 
+                imdb: "https://www.imdb.com/title/tt1130884/",
+                text: "Phenomenal atmospheric building and masterclass psychological pacing layers. Perfect structural parsing." 
+            },
+            { 
+                id: 2, 
+                title: "The Office (U.S.)", 
+                year: "2005",
+                type: "series", 
+                rating: "9.0/10", 
+                imdb: "https://www.imdb.com/title/tt0386676/",
+                text: "The absolute peak standard for situational ensemble loops. Unmatched mockumentary timing metrics." 
+            }
         ];
 
         window.addEventListener('DOMContentLoaded', () => {
@@ -492,16 +525,24 @@
                 cardNode.setAttribute('data-type', item.type);
                 cardNode.style.cssText = "background: var(--bg-glass); border: 1px solid var(--border-glass); border-radius: 18px; padding: 1.25rem; display: flex; gap: 1.25rem; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);";
                 
+                // Render release year tag line if available
+                const yearLabel = item.year ? ` • ${item.year}` : '';
+                // Setup IMDb integration if link exists
+                const imdbAnchor = item.imdb ? `<a href="${item.imdb}" target="_blank" class="imdb-link">IMDb ↗</a>` : '';
+
                 cardNode.innerHTML = `
                     <div style="width: 85px; height: 125px; background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(0,0,0,0.3)); border: 1px solid var(--border-glass); border-radius: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0.4rem; flex-shrink: 0;">
                         <span style="font-size: 1.5rem; margin-bottom: 0.2rem;">${iconSymbol}</span>
                         <span style="font-size: 0.65rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">${item.title}</span>
                     </div>
                     <div style="display: flex; flex-direction: column; justify-content: space-between; flex-grow: 1; min-width: 0;">
-                        <div>
-                            <h3 style="font-size: 1.1rem; font-weight: 700; color: #FFFFFF; letter-spacing: -0.02em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${item.title}</h3>
-                            <div style="color: var(--accent); font-size: 0.85rem; margin-bottom: 0.4rem;">${item.rating}</div>
-                            <p style="color: var(--text-muted); font-size: 0.82rem; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">${item.text}</p>
+                        <div style="display: flex; flex-direction: column; height: 100%;">
+                            <h3 style="font-size: 1.1rem; font-weight: 700; color: #FFFFFF; letter-spacing: -0.02em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                                ${item.title}<span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 400;">${yearLabel}</span>
+                            </h3>
+                            <div style="color: var(--accent); font-size: 0.85rem; margin-bottom: 0.4rem; font-weight: 700;">${item.rating}</div>
+                            <p style="color: var(--text-muted); font-size: 0.82rem; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; margin-bottom: 0.5rem;">${item.text}</p>
+                            ${imdbAnchor}
                         </div>
                     </div>
                 `;
@@ -511,8 +552,10 @@
 
         function saveNewReview() {
             const titleInput = document.getElementById('form-title');
+            const yearInput = document.getElementById('form-year');
             const typeInput = document.getElementById('form-type');
             const ratingInput = document.getElementById('form-rating');
+            const imdbInput = document.getElementById('form-imdb');
             const reviewInput = document.getElementById('form-review');
 
             if (!titleInput.value.trim() || !reviewInput.value.trim()) {
@@ -520,11 +563,19 @@
                 return;
             }
 
+            // Normalizes value fallback strings safely
+            let rawRating = ratingInput.value.trim() || "8.0/10";
+            if (!rawRating.includes('/10')) {
+                rawRating += '/10';
+            }
+
             const newEntry = {
                 id: Date.now(),
                 title: titleInput.value.trim(),
+                year: yearInput.value.trim(),
                 type: typeInput.value,
-                rating: ratingInput.value,
+                rating: rawRating,
+                imdb: imdbInput.value.trim(),
                 text: reviewInput.value.trim()
             };
 
@@ -532,7 +583,11 @@
             localStorage.setItem('shubham_media_reviews', JSON.stringify(libraryDataset));
             renderReviewLibrary();
 
+            // Clear inputs
             titleInput.value = '';
+            yearInput.value = '';
+            ratingInput.value = '';
+            imdbInput.value = '';
             reviewInput.value = '';
             filterMedia('all');
         }
