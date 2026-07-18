@@ -20,7 +20,7 @@
 
         html, body {
             overflow-x: hidden;
-            background: #0B0B0C;
+            background: #0B0B0C; /* This acts as the base under layer */
             height: 100%;
         }
 
@@ -30,6 +30,7 @@
             letter-spacing: -0.01em;
             display: flex;
             flex-direction: column;
+            background: transparent; /* Fix 1: Stop the body from locking out the background layer */
         }
 
         .ambient-bg {
@@ -73,6 +74,7 @@
             position: fixed;
             top: 0; left: 0; right: 0; bottom: 0;
             overflow: hidden;
+            background: transparent; /* Fix 2: Prevent the full-screen view box from masking the image */
         }
         #view-home.active-view { display: flex; }
 
