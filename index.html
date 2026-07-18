@@ -36,7 +36,7 @@
             position: fixed;
             top: 0; left: 0; right: 0; bottom: 0;
             background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.55)),
-                        url("res/bgwork.jpg") no-repeat center center fixed;
+                        url("https://www.shubh13m.github.io/res/bgwork.jpg") no-repeat center center fixed;
             background-size: cover;
             z-index: -1;
         }
@@ -361,7 +361,7 @@
     <!-- ==================== PROJECTS VIEW ==================== -->
     <section id="view-projects" class="app-view">
         <header class="page-header">
-            <h2 class="section-title">Project Architectures</h2>
+            <h2 class="section-title">Projects</h2>
             <p class="section-desc">Open source utilities, data frameworks, and verification libraries.</p>
         </header>
         <div class="bento-layout">
@@ -399,30 +399,9 @@
     <!-- ==================== REVIEWS VIEW ==================== -->
     <section id="view-reviews" class="app-view">
         <header class="page-header">
-            <h2 class="section-title">Media Catalog Diary</h2>
-            <p class="section-desc">Add, filter, and review dynamic entertainment log data entries instantly.</p>
+            <h2 class="section-title">Movie Reviews</h2>
+            <p class="section-desc">Ratings and reviews</p>
         </header>
-
-        <div class="creator-panel">
-            <div class="form-grid">
-                <input type="text" id="form-title" class="input-element" placeholder="Movie or Series Title...">
-                <select id="form-type" class="input-element">
-                    <option value="movie">Movie</option>
-                    <option value="series">Web Series</option>
-                </select>
-                <select id="form-rating" class="input-element">
-                    <option value="★★★★★">5 Stars</option>
-                    <option value="★★★★☆">4 Stars</option>
-                    <option value="★★★☆☆">3 Stars</option>
-                    <option value="★★☆☆☆">2 Stars</option>
-                    <option value="★☆☆☆☆">1 Star</option>
-                </select>
-            </div>
-            <div style="display: flex; gap: 1rem; align-items: center;">
-                <input type="text" id="form-review" class="input-element" placeholder="Write a short review line...">
-                <button class="submit-review-btn" onclick="saveNewReview()">Save</button>
-            </div>
-        </div>
 
         <div class="filter-row">
             <button class="pill-filter active-filter" onclick="filterMedia('all')">All Entries</button>
